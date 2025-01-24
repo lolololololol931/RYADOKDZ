@@ -58,6 +58,38 @@ vector<int> convertTo1D(const vector<vector<int>>& arr) {
     return result;
 }
 
+//n4
+void addContact(vector<string>& names, vector<string>& phones, const string& name, const string& phone) {
+    names.push_back(name);
+    phones.push_back(phone);
+}
+void searchByName(const vector<string>& names, const vector<string>& phones, const string& name) {
+    for (size_t i = 0; i < names.size(); i++) {
+        if (names[i] == name) {
+            cout << "телефон: " << phones[i] << endl;
+            return;
+        }
+    }
+    cout << "не знайдено" << endl;
+}
+void searchByPhone(const vector<string>& names, const vector<string>& phones, const string& phone) {
+    for (size_t i = 0; i < phones.size(); i++) {
+        if (phones[i] == phone) {
+            cout << "імя: " << names[i] << endl;
+            return;
+        }
+    }
+    cout << "не знайдено" << endl;
+}
+void updateContact(vector<string>& names, vector<string>& phones, const string& name, const string& newPhone) {
+    for (size_t i = 0; i < names.size(); i++) {
+        if (names[i] == name) {
+            phones[i] = newPhone;
+            return;
+        }
+    }
+}
+
 int main() {
     system("chcp 1251>nul");
     //n1
@@ -101,6 +133,15 @@ int main() {
         cout << num << " ";
     }
     cout << endl;
+
+    //n4
+    vector<string> names, phones;
+    addContact(names, phones, "kirill", "12345");
+    addContact(names, phones, "nazarchik", "672367");
+    searchByName(names, phones, "kirill");
+    searchByPhone(names, phones, "672367");
+    updateContact(names, phones, "kirill", "54321");
+    searchByName(names, phones, "kirill");
 
     return 0;
 }
